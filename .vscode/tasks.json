@@ -17,6 +17,17 @@
             }
         },
         {
+            "label": "run",
+            "type": "shell",
+            "command": "./hello",
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "brun",
             "type": "shell",
             "dependsOn": "build",

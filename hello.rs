@@ -1,32 +1,26 @@
 
 extern crate rary;
+#[cfg(all(feature="winit", feature="glium"))] #[macro_use] extern crate conrod;
+#[cfg(all(feature="winit", feature="glium"))] mod support;
 
-mod namespace {
-	pub struct Obj {
-		pub name: i32
-	}
-
-	impl Obj {
-		pub fn new(num: i32) -> Obj {
-			Obj{name: num}
-		}
-	}
-}
-
-fn typeid<T: std::any::Any>(_: &T) {
-    println!("{:?}", std::any::TypeId::of::<T>());
-}
 
 fn main() {
-	// let x = namespace::Obj::new(3);
-	// let y = namespace::Obj{name: 10};
+	println!("Conrod here!!!!");
 
-	// println!("HELLO");
+    use conrod;
+    use conrod::backend::glium::glium;
+    use conrod::backend::glium::glium::Surface;
 
-	let x = vec![1, 2, 3];
+	const WIDTH: u32 = 800;
+	const HEIGHT: u32 = 600;
 
-	rary::public_function();
-	rary::indirect_access();
-
-	// typeid(&x);
+	// Build the window.
+	let mut events_loop = glium::glutin::EventsLoop::new();
+	let window = glium::glutin::WindowBuilder::new()
+		.with_title("Canvas")
+		.with_dimensions(WIDTH, HEIGHT);
+	let context = glium::glutin::ContextBuilder::new()
+		.with_vsync(true)
+		.with_multisampling(4);
+	let display = glium::Display::new(window, context, &events_loop).unwrap();
 }
