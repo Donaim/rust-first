@@ -1,16 +1,32 @@
 
-struct Obj {
-	name: i32
-}
+extern crate rary;
 
-impl Obj {
-	fn new(num: i32) -> Obj {
-		Obj{name: num}
+mod namespace {
+	pub struct Obj {
+		pub name: i32
+	}
+
+	impl Obj {
+		pub fn new(num: i32) -> Obj {
+			Obj{name: num}
+		}
 	}
 }
 
-fn main() {
-	let x = Obj::new(3);
+fn typeid<T: std::any::Any>(_: &T) {
+    println!("{:?}", std::any::TypeId::of::<T>());
+}
 
-	println!("HELLO");
+fn main() {
+	// let x = namespace::Obj::new(3);
+	// let y = namespace::Obj{name: 10};
+
+	// println!("HELLO");
+
+	let x = vec![1, 2, 3];
+
+	rary::public_function();
+	rary::indirect_access();
+
+	// typeid(&x);
 }

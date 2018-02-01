@@ -12,11 +12,9 @@
             ],
             "group": "build",
             "presentation": {
-                // Reveal the output only if unrecognized errors occur.
                 "reveal": "always",
                 "focus": true
-            },
-            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            }
         },
         {
             "label": "brun",
@@ -25,11 +23,10 @@
             "command": "./hello",
             "group": "build",
             "presentation": {
-                // Reveal the output only if unrecognized errors occur.
                 "reveal": "always",
                 "focus": true
             },
-            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": []
         }
     ]
 }
