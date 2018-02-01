@@ -1,8 +1,11 @@
-extern crate rand;
+// extern crate conrod;
+
 extern crate conrod;
 
-fn main() {
-    println!("Hello, world!");
+mod window;
 
-    println!("Random num = {}", rand::random::<f32>() );
+fn main() {
+    println!("HELLO");
+
+    window::ww::create();
 }

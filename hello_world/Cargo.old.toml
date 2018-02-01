@@ -1,0 +1,8 @@
+[package]
+name = "hello_world"
+version = "0.1.0"
+authors = ["d0naim"]
+
+[dependencies]
+rand = "0.4"
+conrod = "0.57.0"

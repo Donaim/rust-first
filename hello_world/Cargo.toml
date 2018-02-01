@@ -4,5 +4,8 @@ version = "0.1.0"
 authors = ["d0naim"]
 
 [dependencies]
-rand = "0.4"
-conrod = "0.57.0"
+clap				= "2.22.1"
+piston_window			= "0.64.0"
+conrod				= {version="0.57",features=["piston","piston2d-graphics", "glium"]}
+rand 				= "0.3.15"
+find_folder 			= "0.3.0"
