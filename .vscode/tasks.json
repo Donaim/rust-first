@@ -5,10 +5,12 @@
     "tasks": [
         {
             "label": "build",
+            "dependsOn": "cd",
             "type": "shell",
-            "command": "rustc",
+            "command": "",
             "args": [
-                "hello.rs"
+                "cd hello_world ;",
+                "cargo build"
             ],
             "group": "build",
             "presentation": {
@@ -17,21 +19,14 @@
             }
         },
         {
-            "label": "run",
-            "type": "shell",
-            "command": "./hello",
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "focus": true
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "brun",
+            "dependsOn": "cd",
             "type": "shell",
-            "dependsOn": "build",
-            "command": "./hello",
+            "command": "",
+            "args": [
+                "cd hello_world ;",
+                "cargo run"
+            ],
             "group": "build",
             "presentation": {
                 "reveal": "always",
