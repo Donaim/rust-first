@@ -1,15 +1,6 @@
-// extern crate conrod;
-
-// extern crate rand;
-// extern crate clap;
-
-// extern crate conrod;
-// extern crate find_folder;
-
-mod window;
+#[cfg(all(feature="winit", feature="glium"))] extern crate conrod;
+#[cfg(all(feature="winit", feature="glium"))] mod support;
 
 fn main() {
     println!("HELLO");
-
-    // window::main();
 }

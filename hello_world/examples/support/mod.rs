@@ -16,11 +16,13 @@ extern crate rand;
 use conrod;
 use std;
 
-#[cfg(feature="glium")] use conrod::backend::glium::glium;
+use conrod::backend::glium::glium;
 
 
 pub const WIN_W: u32 = 600;
 pub const WIN_H: u32 = 420;
+
+pub const FONT_PATH: &'static str = "/home/d0naim/dev/rust-first/hello_world/assets/fonts/NotoSans-Regular.ttf";
 
 
 /// A demonstration of some application state we want to control with a conrod GUI.
@@ -363,13 +365,11 @@ pub fn gui(ui: &mut conrod::UiCell, ids: &Ids, app: &mut DemoApp) {
 /// 
 /// This `Iterator`-like type simplifies some of the boilerplate involved in setting up a
 /// glutin+glium event loop that works efficiently with conrod.
-#[cfg(feature="glium")]
 pub struct EventLoop {
     ui_needs_update: bool,
     last_update: std::time::Instant,
 }
 
-#[cfg(feature="glium")]
 impl EventLoop {
 
     pub fn new() -> Self {
