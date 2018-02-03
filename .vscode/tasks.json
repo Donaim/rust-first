@@ -38,7 +38,7 @@
             "type": "shell",
             "command": "",
             "args": [
-                "cd hello_world ;",
+                "cd hello_window ;",
                 "cargo run --features=\"winit glium\" --example window"
             ],
             "group": "build",

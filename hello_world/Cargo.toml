@@ -3,23 +3,6 @@ name = "hello_world"
 version = "0.1.0"
 authors = ["d0naim"]
 
-[package.metadata.docs.rs]
-all-features = true
-
 [dependencies]
-# my deps
 hello_lib           = { path = "../hello_lib" }
-
-# other
-clap				= "2.22.1"
-piston_window			= "0.64.0"
-conrod				= {version="0.57",features=["piston","piston2d-graphics", "glium", "winit"]}
-rand 				= "0.3.15"
-find_folder 			= "0.3.0"
-
-glium = { version = "0.20", optional = true }
-winit = { version = "0.10", optional = true }
-piston2d-graphics = { version = "0.24", optional = true }
-gfx = { version = "0.17", optional = true }
-gfx_core = { version = "0.8", optional = true }
-
+rand 				= "0.3.15" 

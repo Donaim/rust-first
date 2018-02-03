@@ -41,13 +41,12 @@ mod feature {
         let ids = Ids::new(ui.widget_id_generator());
 
         // Add a `Font` to the `Ui`'s `font::Map` from file.
-        const FONT_PATH: &'static str = "/home/d0naim/dev/rust-first/hello_world/assets/fonts/NotoSans-Regular.ttf";
+        const FONT_PATH: &'static str = "/home/d0naim/dev/rust-first/hello_window/assets/fonts/NotoSans-Regular.ttf";
         ui.fonts.insert_from_file(FONT_PATH).unwrap();
 
         // A type used for converting `conrod::render::Primitives` into `Command`s that can be used
         // for drawing to the glium `Surface`.
         let mut renderer = conrod::backend::glium::Renderer::new(&display).unwrap();
-        renderer.
 
         // The image map describing each of our widget->image mappings (in our case, none).
         let image_map = conrod::image::Map::<glium::texture::Texture2d>::new();
