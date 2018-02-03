@@ -15,6 +15,10 @@ mod feature {
     use conrod::{self, widget, Colorable, Positionable, Widget};
     use conrod::backend::glium::glium::{self, Surface};
 
+    struct Idstr {
+        text: &'static str
+    }
+
     pub fn main() {
         const WIDTH: u32 = 400;
         const HEIGHT: u32 = 200;
@@ -43,6 +47,7 @@ mod feature {
         // A type used for converting `conrod::render::Primitives` into `Command`s that can be used
         // for drawing to the glium `Surface`.
         let mut renderer = conrod::backend::glium::Renderer::new(&display).unwrap();
+        renderer.
 
         // The image map describing each of our widget->image mappings (in our case, none).
         let image_map = conrod::image::Map::<glium::texture::Texture2d>::new();
