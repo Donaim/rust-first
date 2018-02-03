@@ -24,7 +24,7 @@
             "command": "",
             "args": [
                 "cd hello_world ;",
-                "cargo run --features=\"winit glium\" "
+                "cargo run"
             ],
             "group": "build",
             "presentation": {
