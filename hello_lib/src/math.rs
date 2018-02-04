@@ -11,7 +11,7 @@ impl Natural {
         if n > 0 { Natural{x: n} }
         else { panic!("Integer is negative -> cannot convert to Natural"); }
     }
-    pub fn newt(n: i32) -> Option<Self> 
+    pub fn newo(n: i32) -> Option<Self> 
     { 
         if n > 0 { Some(Natural{x: n}) }
         else { None }
@@ -34,10 +34,6 @@ impl IsPrime for Natural {
         return true
     }
 }
-impl Into<Natural> for i32 {
-    fn into(self) -> Natural { Natural::new(self) }
-}
-
 
 use std::convert::*;
 impl TryInto<Natural> for i32 {
