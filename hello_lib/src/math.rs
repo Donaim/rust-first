@@ -44,21 +44,19 @@ impl TryInto<Natural> for i32 {
 }
 
 pub fn is_prime<T: TryInto<Natural>>(x: T) -> bool  {
-    match x.try_into() {
-        Ok(n) => n.is_prime(),
-        Err(e) => false,
+    if let Ok(n) = x.try_into() {
+        return n.is_prime()
     }
+    else { return false }
 }
 
 pub fn primes_before_n<T: TryInto<Natural>>(x: T) -> u32 {
-    match x.try_into() {
-        Ok(n) => {
-            let mut count = 0;
-            for i in 1..n.x {
-                if Natural::new(i).is_prime() { count += 1; }
-            }
-            return count
-        },
-        Err(e) => 0,
+    if let Ok(n) = x.try_into() {
+        let mut count = 0;
+        for i in 1..n.x {
+            if Natural::new(i).is_prime() { count += 1; }
+        }
+        return count
     }
+    else { return 0 }
 } 
