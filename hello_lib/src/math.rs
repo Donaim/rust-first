@@ -37,33 +37,21 @@ impl IsPrime for Natural {
 impl Into<Natural> for i32 {
     fn into(self) -> Natural { Natural::new(self) }
 }
-// impl IsPrime for i32 {
-//     fn is_prime(&self) -> bool {
-//         let x: Natural = Natural::newt(*self).unwrap();
-//         return x.is_prime()
-//     }
-// }
 
+
+use std::convert::*;
 impl TryInto<Natural> for i32 {
-    // add code here
+    type Error = String;
+    fn try_into(self) -> Result<Natural, Self::Error> { 
+        return Natural::newe(self)
+    }
 }
 
-use std;
-use std::panic;
-
-pub fn is_prime<T: Into<Natural> + std::panic::UnwindSafe + std::panic::RefUnwindSafe>(x: T) -> Result<Natural, Natural> {
-    // let n = try!(x.into() match);
-    // let mut z = x;
-
-    // let kk = std::panic::catch_unwind(||{ return x.into() });
-    // assert!(result.is_ok());
-
-    println!("LUL");
-
-    let result = panic::catch_unwind(|| {
-    });
-    
-    Ok(Natural::new(1))
+pub fn is_prime<E, T: TryInto<Natural, Error = E>>(x: T) -> Result<bool, E>  {
+    match x.try_into() {
+        Ok(n) => Ok(n.is_prime()),
+        Err(e) => Err(e),
+    }
 }
 
 

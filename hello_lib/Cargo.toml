@@ -2,8 +2,3 @@
 name = "hello_lib"
 version = "0.1.0"
 authors = ["d0naim"]
-
-#![feature(use_extern_macros)]
-
-[features]
-try_from = []
