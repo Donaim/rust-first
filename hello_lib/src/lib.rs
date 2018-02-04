@@ -1,3 +1,6 @@
+#![feature(use_extern_macros)]
+#![feature(catch_expr)]
+
 pub mod math;
 
 pub mod zoo {

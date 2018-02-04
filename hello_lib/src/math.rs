@@ -6,7 +6,7 @@ pub struct Natural {
     x: i32,
 }
 impl Natural {
-    pub fn new(n: i32) -> Self 
+    fn new(n: i32) -> Self 
     {
         if n > 0 { Natural{x: n} }
         else { panic!("Integer is negative -> cannot convert to Natural"); }
@@ -15,6 +15,10 @@ impl Natural {
     { 
         if n > 0 { Some(Natural{x: n}) }
         else { None }
+    }
+    pub fn newe(n: i32) -> Result<Natural, String> {
+        if n > 0 { Ok(Natural{x: n}) }
+        else { Err("Integer has to be positive!".to_string()) }
     }
     pub fn n(&self) -> i32 { self.x }
 }
@@ -39,6 +43,22 @@ impl Into<Natural> for i32 {
 //         return x.is_prime()
 //     }
 // }
+
+use std;
+use std::panic;
+
+pub fn is_prime<T: std::panic::UnwindSafe>(x: T) -> Result<Natural, Natural> {
+    // let n = try!(x.into() match);
+
+    let result = std::panic::catch_unwind(||{ let z = x; });
+    assert!(result.is_ok());
+
+    let result = panic::catch_unwind(|| {
+    });
+    
+    Ok(Natural::new(1))
+}
+
 
 pub fn primes_before_n<T: Into<Natural>>(x: T) -> i32 {
     let nat = x.into();

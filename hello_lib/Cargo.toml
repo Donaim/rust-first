@@ -4,3 +4,5 @@ version = "0.1.0"
 authors = ["d0naim"]
 
 [dependencies]
+
+#![feature(use_extern_macros)]
