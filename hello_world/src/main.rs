@@ -10,7 +10,7 @@ extern crate hello_lib;
 use hello_lib::zoo::*;
 
 fn main() {
-    let duck = Duck::new("Patrick".to_string());
+    let duck = duck::new("Patrick".to_string());
     duck.poke();
     duck.ask("name");
     duck.ask("3.14");
