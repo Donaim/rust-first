@@ -43,7 +43,7 @@ impl TryInto<Natural> for i32 {
     }
 }
 
-pub fn is_prime<E, T: TryInto<Natural, Error = E>>(x: T) -> bool  {
+pub fn is_prime<T: TryInto<Natural>>(x: T) -> bool  {
     match x.try_into() {
         Ok(n) => n.is_prime(),
         Err(e) => false,
