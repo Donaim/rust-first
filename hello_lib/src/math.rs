@@ -24,11 +24,14 @@ pub trait IsPrime {
 }
 impl IsPrime for Natural {
     fn is_prime(&self) -> bool {
-        for i in 1..self.x {
+        for i in 2..self.x {
             if self.x % i == 0 { return false }
         }
         return true
     }
+}
+impl Into<Natural> for i32 {
+    fn into(self) -> Natural { Natural::new(self) }
 }
 // impl IsPrime for i32 {
 //     fn is_prime(&self) -> bool {
@@ -37,11 +40,11 @@ impl IsPrime for Natural {
 //     }
 // }
 
-pub fn primes_before_n(x: Into<Natural>) -> Natural {
-    let xx = x.into();
+pub fn primes_before_n<T: Into<Natural>>(x: T) -> i32 {
+    let nat = x.into();
     let mut count = 0;
-    for i in 0..xx.x {
+    for i in 1..nat.x {
         if Natural::new(i).is_prime() { count += 1; }
     }
-    return Natural::new(count);
+    return count
 } 

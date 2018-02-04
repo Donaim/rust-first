@@ -22,6 +22,7 @@ fn main() {
         print!("{:?} is ", z);
         if z.is_prime() { println!("a prime"); }
         else { println!("not a prime"); }
+        println!("Primes before {} is: {:?}", x, primes_before_n(x));
     }
     else {
         println!("wrong num: {}, must be > 0", x);
