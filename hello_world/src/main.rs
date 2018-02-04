@@ -11,6 +11,8 @@ use hello_lib::zoo::*;
 use hello_lib::math::*;
 
 fn main() {
+    duck::new("Patrick").poke();
+
     println!("{:?}", is_prime(-1));
     println!("{:?}", is_prime(10));
     println!("{:?}", is_prime(7));
