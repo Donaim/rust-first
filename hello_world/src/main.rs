@@ -1,19 +1,18 @@
 #![allow(unused_variables)]
 #![allow(unused_imports)]
+#![allow(dead_code)]
 
 struct Obj {
     index: i32
 }
 
 extern crate hello_lib;
-use hello_lib::hello_namespace;
+use hello_lib::zoo::*;
 
 fn main() {
-    // let x = 5;
-    // let y = x * 2;
-    // println!("HELLO");
-    // println!("lul");
-
-    // let o = Obj { index: 10};
-    hello_namespace::say_hello();
+    let duck = Duck::new("Patrick".to_string());
+    duck.poke();
+    duck.ask("name");
+    duck.ask("3.14");
+    duck.ask("meaning");
 }
