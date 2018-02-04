@@ -44,14 +44,21 @@ impl Into<Natural> for i32 {
 //     }
 // }
 
+impl TryInto<Natural> for i32 {
+    // add code here
+}
+
 use std;
 use std::panic;
 
-pub fn is_prime<T: std::panic::UnwindSafe>(x: T) -> Result<Natural, Natural> {
+pub fn is_prime<T: Into<Natural> + std::panic::UnwindSafe + std::panic::RefUnwindSafe>(x: T) -> Result<Natural, Natural> {
     // let n = try!(x.into() match);
+    // let mut z = x;
 
-    let result = std::panic::catch_unwind(||{ let z = x; });
-    assert!(result.is_ok());
+    // let kk = std::panic::catch_unwind(||{ return x.into() });
+    // assert!(result.is_ok());
+
+    println!("LUL");
 
     let result = panic::catch_unwind(|| {
     });
