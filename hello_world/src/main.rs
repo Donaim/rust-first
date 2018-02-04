@@ -14,4 +14,7 @@ fn main() {
     println!("{:?}", is_prime(-1));
     println!("{:?}", is_prime(10));
     println!("{:?}", is_prime(7));
+
+    println!("Primes before {} is: {}", -3, primes_before_n(-3));
+    println!("Primes before {} is: {}", 100, primes_before_n(100));
 }

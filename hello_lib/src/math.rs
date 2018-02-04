@@ -47,19 +47,22 @@ impl TryInto<Natural> for i32 {
     }
 }
 
-pub fn is_prime<E, T: TryInto<Natural, Error = E>>(x: T) -> Result<bool, E>  {
+pub fn is_prime<E, T: TryInto<Natural, Error = E>>(x: T) -> bool  {
     match x.try_into() {
-        Ok(n) => Ok(n.is_prime()),
-        Err(e) => Err(e),
+        Ok(n) => n.is_prime(),
+        Err(e) => false,
     }
 }
 
-
-pub fn primes_before_n<T: Into<Natural>>(x: T) -> i32 {
-    let nat = x.into();
-    let mut count = 0;
-    for i in 1..nat.x {
-        if Natural::new(i).is_prime() { count += 1; }
+pub fn primes_before_n<T: TryInto<Natural>>(x: T) -> u32 {
+    match x.try_into() {
+        Ok(n) => {
+            let mut count = 0;
+            for i in 1..n.x {
+                if Natural::new(i).is_prime() { count += 1; }
+            }
+            return count
+        },
+        Err(e) => 0,
     }
-    return count
 } 
