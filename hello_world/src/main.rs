@@ -8,6 +8,7 @@ struct Obj {
 
 extern crate hello_lib;
 use hello_lib::zoo::*;
+use hello_lib::math::*;
 
 fn main() {
     let duck = duck::new("Patrick".to_string());
@@ -15,4 +16,9 @@ fn main() {
     duck.ask("name");
     duck.ask("3.14");
     duck.ask("meaning");
+
+    
+
+
+    // println!("{}", (-1).is_prime());
 }

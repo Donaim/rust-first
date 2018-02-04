@@ -9,7 +9,7 @@
             "command": "",
             "args": [
                 "cd hello_world ;",
-                "cargo build"
+                "cargo build unstable=allow"
             ],
             "group": "build",
             "presentation": {

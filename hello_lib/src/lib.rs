@@ -1,3 +1,5 @@
+pub mod math;
+
 pub mod zoo {
     pub mod duck {
         pub fn new(name: String) -> Duck {
@@ -5,7 +7,7 @@ pub mod zoo {
         }
 
         pub struct Duck {
-            pub name: String
+            pub name: String,
         }
 
         impl Duck {
