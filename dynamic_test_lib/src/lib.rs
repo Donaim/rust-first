@@ -1,5 +1,5 @@
+#![crate_type="dylib"] // FIXME: should become a cdylib in due time
 #![allow(dead_code)]
-#![crate_type = "dylib"]
 
 extern crate sharer;
 use sharer::*;
