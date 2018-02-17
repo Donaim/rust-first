@@ -1,15 +1,18 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
+#![allow(unused_imports)]
 
 use std::mem;
+
+extern crate sharer;
+use sharer::*;
+extern crate libloading;
+use libloading::{Symbol, Library};
+
 
 pub trait TestTrait {
     fn work(&self);
 }
-pub trait FalseTrait {
-    // add code here
-}
-
 
 #[derive(Debug)]
 pub struct TestObj47 {
@@ -61,11 +64,23 @@ fn trait_to_struct() {
 }
 
 
+const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/release/libdynamic_test_lib.rlib";
+
+fn load_lib() {
+    let lib = Library::new(LIBPATH).unwrap();
+    unsafe {
+        let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_get_trait\0").unwrap();
+        let sh = f();
+    }
+}
+
 fn main() {
     // trait_to_struct();
 
-    let a = TestObj47{name: "KEK".to_string()};
-    let b = &a as &TestTrait;
+    // let a = TestObj47{name: "KEK".to_string()};
+    // let b = &a as &TestTrait;
 
-    let c = convert_ptr::<&TestTrait, TestObj47>(b);
+    // let c = convert_ptr::<&TestTrait, TestObj47>(b);
+
+    load_lib();
 }

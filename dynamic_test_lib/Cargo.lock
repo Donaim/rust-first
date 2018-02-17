@@ -1,4 +1,11 @@
 [[package]]
 name = "dynamic_test_lib"
 version = "0.1.0"
+dependencies = [
+ "sharer 0.1.0",
+]
+
+[[package]]
+name = "sharer"
+version = "0.1.0"
 

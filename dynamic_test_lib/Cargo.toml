@@ -2,5 +2,7 @@
 name = "dynamic_test_lib"
 version = "0.1.0"
 authors = ["d0naim"]
+crate-type = ["dylib"]
 
 [dependencies]
+sharer           = { path = "../sharer" }
