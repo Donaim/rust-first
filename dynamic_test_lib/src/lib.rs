@@ -33,6 +33,7 @@ pub extern "C" fn test_get_trait() -> &'static Sharable {
     return &(Obj123::<'static>{name: "some name"}) as &'static Sharable
 }
 
-pub fn get_trait<'a>() -> &'a Sharable {
-    return &(Obj123::<'a>{name: "some name"}) as &'a Sharable;
+#[no_mangle]
+pub extern "C" fn get_func() -> (fn(i32) -> i32) {
+    return |x| x * x
 }

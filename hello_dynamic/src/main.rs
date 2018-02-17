@@ -80,21 +80,15 @@ const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_li
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
-        let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_get_trait\0").unwrap();
-        let sh = f();
-        println!("geting name... name = {:?}", sh.name());
+        let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
+        let ff = f();
+        let x = ff(2);
+        println!("f(2) = {}", x);
 
         println!("all fine");
     }
 }
 
 fn main() {
-    // trait_to_struct();
-
-    // let a = TestObj47{name: "KEK".to_string()};
-    // let b = &a as &TestTrait;
-
-    // let c = convert_ptr::<&TestTrait, TestObj47>(b);
-
     load_lib();
 }
