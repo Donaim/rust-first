@@ -64,13 +64,15 @@ fn trait_to_struct() {
 }
 
 
-const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/release/libdynamic_test_lib.rlib";
+const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/release/libdynamic_test_lib.so";
 
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
         let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_get_trait\0").unwrap();
         let sh = f();
+
+        println!("all fine");
     }
 }
 
