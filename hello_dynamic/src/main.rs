@@ -22,9 +22,25 @@ impl TestTrait for TestObj47 {
     }
 }
 
-fn trait_to_struct() {
+fn convert_ptr<T, R>(trait_ref: T) -> &'static R
+{
+    /*
+        use:
+            let a = TestObj47{name: "KEK".to_string()};
+            let b = &a as &TestTrait;
+
+            let c = convert_ptr::<&TestTrait, TestObj47>(b);
+    */
     unsafe {
-        let obj = &TestObj47{name: "Hello".to_string()};
+        let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
+        let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
+        return obj2;
+    }
+}
+
+fn trait_to_struct() {
+    let obj = &TestObj47{name: "Hello".to_string()};
+    unsafe {
         let trait_ref: &TestTrait = obj as &TestTrait;
 
         let obj_ref_arr = mem::transmute::<&TestObj47, [u8; 64 / 8]>(obj);
@@ -44,6 +60,12 @@ fn trait_to_struct() {
     }
 }
 
+
 fn main() {
-    trait_to_struct();
+    // trait_to_struct();
+
+    let a = TestObj47{name: "KEK".to_string()};
+    let b = &a as &TestTrait;
+
+    let c = convert_ptr::<&TestTrait, TestObj47>(b);
 }
