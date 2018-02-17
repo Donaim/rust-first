@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 #![allow(unused_imports)]
-
 use std::mem;
 
 extern crate sharer;
@@ -24,16 +23,28 @@ impl TestTrait for TestObj47 {
         println!("working...");
     }
 }
+pub trait LulTrait {
+}
+
 
 fn convert_ptr<T, R>(trait_ref: T) -> &'static R
 {
     /*
-        use:
+        usage:
             let a = TestObj47{name: "KEK".to_string()};
             let b = &a as &TestTrait;
 
             let c = convert_ptr::<&TestTrait, TestObj47>(b);
     */
+    unsafe {
+        let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
+        let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
+        return obj2;
+    }
+}
+
+fn convert_ptr_ez<T, R>(trait_ref: T) -> &'static R
+{
     unsafe {
         let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
         let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
@@ -71,6 +82,7 @@ fn load_lib() {
     unsafe {
         let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_get_trait\0").unwrap();
         let sh = f();
+        println!("geting name... name = {:?}", sh.name());
 
         println!("all fine");
     }
