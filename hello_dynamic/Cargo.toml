@@ -1,0 +1,7 @@
+[package]
+name = "hello_dynamic"
+version = "0.1.0"
+authors = ["d0naim"]
+
+[dependencies]
+dynamic = "0.2.1"
