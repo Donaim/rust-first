@@ -29,11 +29,22 @@ impl <'a> Sharable for Obj123<'a> {
 }
 
 #[no_mangle]
-pub extern "C" fn test_get_trait() -> &'static Sharable {
-    return &(Obj123::<'static>{name: "some name"}) as &'static Sharable
-}
-
-#[no_mangle]
 pub extern "C" fn get_func() -> (fn(i32) -> i32) {
     return |x| x * x
 }
+
+
+struct Lul {
+    id: i32,
+} 
+
+impl Sharable for Lul {
+    
+}
+
+
+#[no_mangle]
+pub extern "C" fn get_lul<'a>() -> &'a Sharable {
+    return &Lul{id: 10}
+}
+

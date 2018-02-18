@@ -80,10 +80,13 @@ const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_li
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
-        let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
-        let ff = f();
-        let x = ff(2);
-        println!("f(2) = {}", x);
+        // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
+        let f: Symbol<unsafe extern fn<'a>() -> &'a Sharable> = lib.get(b"get_lul\0").unwrap();
+        // let ff = f();
+        // let x = ff(2);
+        // println!("f(2) = {}", x);
+        let z = f();
+        println!("{:?}", z.name());
 
         println!("all fine");
     }
@@ -91,4 +94,6 @@ fn load_lib() {
 
 fn main() {
     load_lib();
+    // let z = get_sharable();
+    // println!("{:?}", z.name());
 }
