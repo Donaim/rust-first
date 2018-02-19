@@ -85,16 +85,24 @@ pub struct ObjT {
     a: i32
 }
 
+use std::ops::Deref;
+fn deref<'a, A, T>(x: Symbol<A>) -> &T {
+    unsafe {
+        // Additional reference level for a dereference on `deref` return value.
+        mem::transmute(&x.pointer)
+    }
+}
+
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
         // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
-        let f: Symbol<unsafe extern fn() -> &'static ObjT> = lib.get(b"test_identity_struct\0").unwrap();
+        let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_identity_struct\0").unwrap();
         // let ff = f();
         // let x = ff(2);
         // println!("f(2) = {}", x);
         // println!("{:?}", f().name());
-        println!("{}", f().a);
+        // println!("{}", f().a);
 
         println!("all fine");
     }
