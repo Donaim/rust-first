@@ -30,7 +30,7 @@ pub trait LulTrait {
 }
 
 
-fn convert_ptr<T, R>(trait_ref: T) -> &'static R
+fn convert_ptr<T, R>(trait_ref: *const T) -> &'static R
 {
     /*
         usage:
@@ -39,21 +39,15 @@ fn convert_ptr<T, R>(trait_ref: T) -> &'static R
 
             let c = convert_ptr::<&TestTrait, TestObj47>(b);
     */
+    
     unsafe {
-        let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
-        let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
-        return obj2;
+        // let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
+        // let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
+        // return obj2;
+        return mem::transmute(&trait_ref);
     }
 }
 
-fn convert_ptr_ez<T, R>(trait_ref: T) -> &'static R
-{
-    unsafe {
-        let trait_ref_arr = mem::transmute::<&T, [u8; 64 / 8]>(&trait_ref);
-        let obj2: &'static R = mem::transmute::<[u8; 64 / 8], &R>(trait_ref_arr);
-        return obj2;
-    }
-}
 
 fn trait_to_struct() {
     let obj = &TestObj47{name: "Hello".to_string()};
@@ -85,13 +79,13 @@ pub struct ObjT {
     a: i32
 }
 
-use std::ops::Deref;
-fn deref<'a, A, T>(x: Symbol<A>) -> &T {
-    unsafe {
-        // Additional reference level for a dereference on `deref` return value.
-        mem::transmute(&x.pointer)
-    }
-}
+// use std::ops::Deref;
+// fn deref<'a, A, T>(x: Symbol<A>) -> &T {
+//     unsafe {
+//         // Additional reference level for a dereference on `deref` return value.
+//         mem::transmute(&x.pointer)
+//     }
+// }
 
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
@@ -103,6 +97,8 @@ fn load_lib() {
         // println!("f(2) = {}", x);
         // println!("{:?}", f().name());
         // println!("{}", f().a);
+        let x = f.transmute_to::<unsafe extern fn() -> &'static ObjT>();
+        println!("{}", x().a);
 
         println!("all fine");
     }
