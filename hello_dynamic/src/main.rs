@@ -80,6 +80,11 @@ fn trait_to_struct() {
 
 const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/debug/libdynamic_test_lib.so";
 
+#[repr(C)] // can shar even without this attribute
+pub struct ObjT {
+    a: i32
+}
+
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {

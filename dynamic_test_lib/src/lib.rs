@@ -4,6 +4,7 @@
 extern crate sharer;
 use sharer::*;
 
+#[repr(C)] // can shar even without this attribute
 pub struct ObjT {
     a: i32
 }
