@@ -9,9 +9,15 @@ pub trait Sharable {
         return "Unnamed"
     }
 }
-struct Lul {
+
+pub struct Lul {
     id: i32,
-} 
+}
+impl Lul {
+    pub fn new() -> Lul {
+        Lul {id: -1}
+    }
+}
 
 impl Sharable for Lul {
     

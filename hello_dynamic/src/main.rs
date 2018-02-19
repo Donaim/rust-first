@@ -8,6 +8,9 @@ use sharer::*;
 extern crate libloading;
 use libloading::{Symbol, Library};
 
+extern crate dynamic;
+use dynamic::*;
+
 
 pub trait TestTrait {
     fn work(&self);
@@ -81,19 +84,23 @@ fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
         // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
-        let f: Symbol<unsafe extern fn<'a>() -> &'a Sharable> = lib.get(b"get_lul\0").unwrap();
+        let f: Symbol<unsafe extern fn() -> Lul> = lib.get(b"get_lul_obj\0").unwrap();
         // let ff = f();
         // let x = ff(2);
         // println!("f(2) = {}", x);
-        let z = f();
-        println!("{:?}", z.name());
+        // println!("{:?}", z().name());
 
         println!("all fine");
     }
 }
 
+
+
 fn main() {
     load_lib();
     // let z = get_sharable();
-    // println!("{:?}", z.name());
+
+    // let x = Dynamic::new(TestObj47{name: "zulul".to_string()});
+    // println!("x = {:?}", x);
+    // println!("x as i32 = {:?}", x.downcast_ref::<TestObj47>());
 }
