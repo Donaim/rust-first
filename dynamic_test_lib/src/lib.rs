@@ -4,7 +4,13 @@
 extern crate sharer;
 use sharer::*;
 
+pub struct ObjT {
+    a: i32
+}
+impl Sharable for ObjT {
+}
+
 #[no_mangle]
-pub extern "C" fn test_identity_struct() -> Lul {
-    Lul::new()
+pub extern "C" fn test_identity_struct() -> &'static Sharable {
+    &ObjT{a: 10}
 }
