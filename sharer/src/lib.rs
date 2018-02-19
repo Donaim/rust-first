@@ -10,6 +10,7 @@ pub trait Sharable {
     }
 }
 
+#[repr(C)]
 pub struct Lul {
     id: i32,
 }
