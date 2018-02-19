@@ -97,7 +97,7 @@ fn load_lib() {
         // println!("f(2) = {}", x);
         // println!("{:?}", f().name());
         // println!("{}", f().a);
-        let x = f.transmute_to::<unsafe extern fn() -> &'static ObjT>();
+        let x = f.into_type::<unsafe extern fn() -> &'static ObjT>();
         println!("{}", x().a);
 
         println!("all fine");
