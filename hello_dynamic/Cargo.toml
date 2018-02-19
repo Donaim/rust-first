@@ -6,5 +6,5 @@ authors = ["d0naim"]
 [dependencies]
 sharer          = { path = "../sharer" }
 # libloading      = "0.5.0"
-libloading      = { path = "../rust_libloading" }
+libloading      = { path = "../modified_libloading" }
 dynamic         = "0.2.1"
