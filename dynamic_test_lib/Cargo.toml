@@ -1,0 +1,11 @@
+[package]
+name = "dynamic_test_lib"
+version = "0.1.0"
+authors = ["d0naim"]
+
+[dependencies]
+sharer           = { path = "../sharer" }
+
+[lib]
+name = "dynamic_test_lib"
+crate-type = ["dylib"]

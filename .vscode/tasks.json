@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "",
+            "args": [
+                "cd hello_world ;",
+                "cargo build unstable=allow"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "brun",
+            "type": "shell",
+            "command": "",
+            "args": [
+                "cd hello_world ;",
+                "cargo run"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "exampleWindow",
+            "type": "shell",
+            "command": "",
+            "args": [
+                "cd hello_window ;",
+                "cargo run --features=\"winit glium\" --example window"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "focus": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

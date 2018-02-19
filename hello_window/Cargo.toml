@@ -1,0 +1,26 @@
+[package]
+name = "hello_window"
+version = "0.1.0"
+authors = ["d0naim"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+# The default set of optional packages. Most people will want to use these
+# packages, but they are strictly optional. Note that `session` is not a package
+# but rather another feature listed in this manifest.
+default = ["glium", "winit"]
+
+[dependencies]
+clap				= "2.22.1"
+piston_window			= "0.64.0"
+conrod				= {version="0.57",features=["piston","piston2d-graphics", "glium", "winit"]}
+rand 				= "0.3.15"
+find_folder 			= "0.3.0"
+
+glium = { version = "0.20", optional = true }
+winit = { version = "0.10", optional = true }
+piston2d-graphics = { version = "0.24", optional = true }
+gfx = { version = "0.17", optional = true }
+gfx_core = { version = "0.8", optional = true }
