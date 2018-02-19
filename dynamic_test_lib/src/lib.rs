@@ -5,6 +5,6 @@ extern crate sharer;
 use sharer::*;
 
 #[no_mangle]
-pub extern "C" fn test_identity_struct(x: Lul) -> Lul {
-    x
+pub extern "C" fn test_identity_struct() -> Lul {
+    Lul::new()
 }

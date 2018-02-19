@@ -78,13 +78,13 @@ fn trait_to_struct() {
 }
 
 
-const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/release/libdynamic_test_lib.so";
+const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/debug/libdynamic_test_lib.so";
 
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
         // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
-        let f: Symbol<unsafe extern fn(Lul) -> Lul> = lib.get(b"test_identity_struct\0").unwrap();
+        let f: Symbol<unsafe extern fn() -> Lul> = lib.get(b"test_identity_struct\0").unwrap();
         // let ff = f();
         // let x = ff(2);
         // println!("f(2) = {}", x);
