@@ -71,8 +71,10 @@ fn trait_to_struct() {
     }
 }
 
-
+#[cfg(unix)]
 const LIBPATH: &'static str = "/home/d0naim/dev/learn/rust-first/dynamic_test_lib/target/debug/libdynamic_test_lib.so";
+#[cfg(windows)]
+const LIBPATH: &'static str = "C:\\Users\\d0naim\\dev\\rust-first\\dynamic_test_lib\\target\\debug\\dynamic_test_lib.dll";
 
 #[repr(C)] // can shar even without this attribute
 pub struct ObjT {
@@ -90,13 +92,13 @@ pub struct ObjT {
 fn load_lib() {
     let lib = Library::new(LIBPATH).unwrap();
     unsafe {
-        // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
+        // // let f: Symbol<unsafe extern fn() -> fn(i32) -> i32> = lib.get(b"get_func\0").unwrap();
         let f: Symbol<unsafe extern fn() -> &'static Sharable> = lib.get(b"test_identity_struct\0").unwrap();
-        // let ff = f();
-        // let x = ff(2);
-        // println!("f(2) = {}", x);
-        // println!("{:?}", f().name());
-        // println!("{}", f().a);
+        // // let ff = f();
+        // // let x = ff(2);
+        // // println!("f(2) = {}", x);
+        // // println!("{:?}", f().name());
+        // // println!("{}", f().a);
         let x = f.into_type::<unsafe extern fn() -> &'static ObjT>();
         println!("{}", x().a);
 
