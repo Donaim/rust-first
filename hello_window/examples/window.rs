@@ -10,10 +10,13 @@ fn main() {
     feature::main();
 }
 
+mod support;
+
 #[cfg(all(feature="winit", feature="glium"))]
 mod feature {
     use conrod::{self, widget, Colorable, Positionable, Widget};
     use conrod::backend::glium::glium::{self, Surface};
+    use support;
 
     struct Idstr {
         text: &'static str
@@ -41,8 +44,7 @@ mod feature {
         let ids = Ids::new(ui.widget_id_generator());
 
         // Add a `Font` to the `Ui`'s `font::Map` from file.
-        const FONT_PATH: &'static str = "/home/d0naim/dev/rust-first/hello_window/assets/fonts/NotoSans-Regular.ttf";
-        ui.fonts.insert_from_file(FONT_PATH).unwrap();
+        ui.fonts.insert_from_file(support::FONT_PATH).unwrap();
 
         // A type used for converting `conrod::render::Primitives` into `Command`s that can be used
         // for drawing to the glium `Surface`.

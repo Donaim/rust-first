@@ -22,8 +22,10 @@ use conrod::backend::glium::glium;
 pub const WIN_W: u32 = 600;
 pub const WIN_H: u32 = 420;
 
-pub const FONT_PATH: &'static str = "/home/d0naim/dev/rust-first/hello_window/assets/fonts/NotoSans-Regular.ttf";
-
+#[cfg(unix)]
+pub const FONT_PATH: &'static str = "assets/fonts/NotoSans-Regular.ttf";
+#[cfg(windows)]
+pub const FONT_PATH: &'static str = "assets\\fonts\\NotoSans-Regular.ttf";
 
 /// A demonstration of some application state we want to control with a conrod GUI.
 pub struct DemoApp {

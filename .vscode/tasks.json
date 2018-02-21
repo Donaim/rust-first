@@ -39,7 +39,11 @@
             "command": "",
             "args": [
                 "cd hello_window ;",
-                "cargo run --features=\"winit glium\" --example window"
+                "cargo run",
+                "--features=\"winit glium\"",
+                // "--example window",
+                "--example canvas",
+                // "--release"
             ],
             "group": "build",
             "presentation": {
