@@ -9,6 +9,9 @@ pub struct ObjT {
     a: i32
 }
 impl Sharable for ObjT {
+    fn name(&self) -> &'static str {
+        return "Named somehow"
+    }
 }
 
 #[no_mangle]
