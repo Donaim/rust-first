@@ -6,6 +6,5 @@ authors = ["d0naim"]
 [dependencies]
 sharer          = { path = "../sharer" }
 # libloading      = "0.5.0"
-# libloading      = { path = "../rust_libloading" }
-libloading      = { git = "https://github.com/Donaim/rust_libloading" }
+libloading      = { git = "https://github.com/Donaim/rust_libloading" } # added 'into_type' method for Symbol
 dynamic         = "0.2.1"
